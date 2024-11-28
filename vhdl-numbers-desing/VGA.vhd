@@ -103,33 +103,7 @@ architecture Behavioral of VGACounter is
        Port map (  HCOUNT => hcount,VCOUNT => vcount,PAINT => paint);
   
 
-	Display1: Display  
-	GENERIC MAP (
-		LW => 5,
-		DW => 25,
-		DL => 40,
-		POSX => 17,
-		POSY => 10)
-	PORT MAP(
-		HCOUNT => hcount,
-		VCOUNT => vcount,
-		VALUE => decenas,
-		PAINT => paint1
-	);
-	
-	Display4: Display  
-	GENERIC MAP (
-		LW => 5,
-		DW => 25,
-		DL => 40,
-		POSX => 77,
-		POSY => 10)
-	PORT MAP(
-		HCOUNT => hcount,
-		VCOUNT => vcount,
-		VALUE => "1001",
-		PAINT => paint4
-	);
+
 	
 	Display0: Display 
 	GENERIC MAP (
