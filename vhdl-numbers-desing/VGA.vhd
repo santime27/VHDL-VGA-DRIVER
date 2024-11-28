@@ -100,36 +100,8 @@ architecture Behavioral of VGACounter is
 	cuadro1: square 
     component square is
         Generic (POSX => 100,POSY => 50,ANCHO => 20,X_AXIS_SET=>1,Y_AXIS_SET => 1); 
-       Port map (  HCOUNT => hcount,VCOUNT => vcount,PAINT => paint);
+       Port map (  HCOUNT => hcount,VCOUNT => vcount,PAINT => rgb_aux3);
   
-
-
-	
-	Display0: Display 
-	GENERIC MAP (
-		LW => 20,
-		DW => 100,
-		DL => 160,
-		POSX => 440,
-		POSY => 240)
-	PORT MAP(
-		HCOUNT => hcount,
-		VCOUNT => vcount,
-		VALUE => unidades,
-		PAINT => paint0
-	);
-
-	rgb_aux1 <= "110" when paint2='1' else
-	           "001" when paint1='1' else
-				  "100" when paint0='1' else
-				  "111" when paint4='1' else
-				  "001" when (hcount = 60)  else
-				  "001" when (vcount = 60) and (hcount < 480)else
-				  "001" when (hcount = 120) else
-				  "000";
-
-	rgb_aux3 <= rgb_aux1(2)&rgb_aux1(2)&rgb_aux1(2)&rgb_aux1(2)&rgb_aux1(1)&rgb_aux1(1)&rgb_aux1(1)&rgb_aux1(1)&rgb_aux1(0)&rgb_aux1(0)&rgb_aux1(0)&rgb_aux1(0);
-
 	Inst_vga_ctrl_640x480_60Hz: vga_ctrl_640x480_60Hz PORT MAP(
 		rst => RST,
 		clk => CLK,
